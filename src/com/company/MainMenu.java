@@ -23,14 +23,37 @@ public class MainMenu {
                 " 8. View task details \n" +
                 " 9. Exit task manager ");
         input.nextInt();
-        task.arrayListOfTasks();
+
         switch (input.nextInt()) {
 
             case 1:
 
+                // Creating Task
                 System.out.println(" Please create a title ");
                 input.nextLine();
-                Task task = new Task() {
+                Tasks userTask = new Tasks();
+                userTask.setTitle(input.nextLine());
+                System.out.println(" Please enter a due date ");
+                userTask.setDueDate(input.nextLine());
+                System.out.println(" Please enter the task details");
+                userTask.setTaskDetails(input.nextLine());
+                System.out.println(" Task: " + userTask.getTitle() + " Saved ");
+                selectionMenu();
+                break;
+
+            case 2:
+
+                // Lists Task
+                System.out.println("These are your saved tasks: ");
+
+
+
+
+
+
+
+
+                }
 
 
 
@@ -61,4 +84,4 @@ public class MainMenu {
 
 
 
-}
+

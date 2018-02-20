@@ -7,7 +7,7 @@ public class Main {
 
         MainMenu menu = new MainMenu();
         TaskArrayList tasks = new TaskArrayList();
-        tasks.arrayListOfTasks();
+
         menu.selectionMenu();
 
 

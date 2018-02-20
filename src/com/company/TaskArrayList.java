@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskArrayList {
-    List<task> = new ArrayList();
-    task = new task
-    public void arrayListOfTasks() {
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+//    List<task> f = new ArrayList();
+//    task taskR = new task("");
+//    public void arrayListOfTasks() {
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//    }
 
 
 
