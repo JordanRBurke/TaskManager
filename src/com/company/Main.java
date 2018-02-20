@@ -2,7 +2,18 @@ package com.company;
 
 public class Main {
 
+
     public static void main(String[] args) {
-	// write your code here
+
+        MainMenu menu = new MainMenu();
+        TaskArrayList tasks = new TaskArrayList();
+        tasks.arrayListOfTasks();
+        menu.selectionMenu();
+
+
+
+
+
+
     }
 }
