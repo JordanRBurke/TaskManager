@@ -6,7 +6,7 @@ public class Tasks {
 
     Scanner input = new Scanner(System.in);
 
-    String title = input.nextLine();
+    String title;
     String DueDate;
     String taskDetails;
     String dateCompleted;

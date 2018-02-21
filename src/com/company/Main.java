@@ -6,8 +6,10 @@ public class Main {
     public static void main(String[] args) {
 
         MainMenu menu = new MainMenu();
-        TaskArrayList tasks = new TaskArrayList();
 
+//        Tasks task = new Tasks();
+
+//        menu.taskArrayList();
         menu.selectionMenu();
 
 
