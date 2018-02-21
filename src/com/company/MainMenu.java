@@ -26,10 +26,10 @@ public class MainMenu {
                 " 8. View task details \n" +
                 " 9. Exit task manager ");
 
+        try {
+            switch (input.nextInt()) {
 
-        switch (input.nextInt()) {
-
-            case 1:
+                case 1:
 
                 // Creating Task (Getting input from user)
                 System.out.println(" Please create a title ");
@@ -58,47 +58,47 @@ public class MainMenu {
                 }
 
 
-
                 selectionMenu();
                 break;
 
-            case 2:
+                case 2:
 
                 // Lists Task
-                System.out.println("These are your saved tasks: ");
-                System.out.println(task.getTitle());
-                System.out.println("Would you like to go back to the menu? \n 1. Yes ");
-                if (input.nextInt() == 1) {
-                    selectionMenu();
-                }
-                break;
+                    System.out.println("These are your saved tasks: ");
+                    System.out.println(task.getTitle());
+                    System.out.println("Would you like to go back to the menu? \n 1. Yes ");
+                    if (input.nextInt() == 1) {
+                        selectionMenu();
+                    }
+                    break;
 
-            case 3:
+                case 3:
 
-                System.out.println("Uncomplete tasks: \n " + taskList.get(0).getTitle() + " (Uncompleted) " + taskList.get(1).getTitle() + " (Uncompleted) ");
+                    System.out.println("Uncomplete tasks: \n " + taskList.get(0).getTitle() + " (Uncompleted) " + taskList.get(1).getTitle() + " (Uncompleted) ");
 
-                break;
+                    break;
 
-            case 4:
-                System.out.println("This is a list of your tasks that you have completed");
+                case 4:
+                    System.out.println("This is a list of your tasks that you have completed");
 
-                break;
+                    break;
 
-            case 5:
-                System.out.println("Which task would you like to mark as complete? \n 1. " + taskList.get(0).getTitle());
+                case 5:
+                    System.out.println("Which task would you like to mark as complete? \n 1. " + taskList.get(0).getTitle());
 
-                if (input.nextInt() == 1) {
+                    if (input.nextInt() == 1) {
                     task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
-                }
-                System.out.println("Would you like to go back to the menu? \n 1. Yes");
-                if (input.nextInt() == 1) {
+                    }
+                    System.out.println("Would you like to go back to the menu? \n 1. Yes");
+                    if (input.nextInt() == 1) {
 
-                }
-                break;
+                    }
+                    break;
 
-            case 6:
-                System.out.println("Which tasks would you like to remove? \n 1. " + taskList.get(0).getTitle());
-                if (input.nextInt() == 1) {
+                case 6:
+                    // Removes task
+                    System.out.println("Which tasks would you like to remove? \n 1. " + taskList.get(0).getTitle());
+                    if (input.nextInt() == 1) {
 //                    taskList.remove(0);
                     System.out.println("Would you like to exit? \n 1. Yes ");
                     if (input.nextInt() == 1) {
@@ -106,40 +106,46 @@ public class MainMenu {
                     }
 
 
-                }
-                break;
+                    }
+                    break;
 
-            case 7:
-                System.out.println("Which task would you like to edit? \n 1. " + taskList.get(0).getTitle());
-                if (input.nextInt() == 1) {
-                    task.setTitle(" ");
-                    System.out.println(" Task has been removed! Would you like to go back to the menu? \n 1. Yes ");
+                case 7:
+                    // Edits task
+                    System.out.println("Which task would you like to edit? \n 1. " + taskList.get(0).getTitle());
                     if (input.nextInt() == 1) {
-                        selectionMenu();
+                        task.setTitle(" ");
+                        System.out.println(" Task has been removed! Would you like to go back to the menu? \n 1. Yes ");
+                        if (input.nextInt() == 1) {
+                            selectionMenu();
+                        }
                     }
-                }
-                break;
-            case 8:
-                System.out.println(" Which task would you like to view? \n 1. " + taskList.get(0).getTitle());
-                if (input.nextInt() == 1) {
-                    System.out.println(" Here are your details: \n" +
-                            " Description - " + taskList.get(0).getTaskDetails() + " \n" +
+                    break;
+                case 8:
+                    // Allows user to view details
+                    System.out.println(" Which task would you like to view? \n 1. " + taskList.get(0).getTitle());
+                    if (input.nextInt() == 1) {
+                        System.out.println(" Here are your details: \n" +
+                                "" + " Description - " + taskList.get(0).getTaskDetails() + " \n" +
                             " DueDate - " + taskList.get(0).getDueDate());
-                    System.out.println(" Would you like to go back to the menu? \n 1. Yes");
+                        System.out.println(" Would you like to go back to the menu? \n 1. Yes");
                     if (input.nextInt() == 1) {
                         selectionMenu();
                     }
                 }
-                break;
+                    break;
 
             case 9:
+                // Closes the program
                 System.out.println(" Closing Program...... ");
                 System.exit(0);
+                break;
 
 
+        }
 
-
-
+        } catch (IndexOutOfBoundsException ime) {
+            System.out.println("Error, please make sure you put a valid number");
+            selectionMenu();
         }
 
 
