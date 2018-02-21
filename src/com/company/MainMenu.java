@@ -34,7 +34,7 @@ public class MainMenu {
                 // Creating Task (Getting input from user)
                 System.out.println(" Please create a title ");
                 input.nextLine();
-                task.setTitle(input.nextLine());
+                task.setTitle(input.nextLine() + " (Uncomplete) ");
                 System.out.println(" Please enter a due date for said task ");
                 task.setDueDate(input.nextLine());
                 System.out.println("Please add task details for your task");
@@ -71,10 +71,72 @@ public class MainMenu {
                 if (input.nextInt() == 1) {
                     selectionMenu();
                 }
+                break;
 
             case 3:
 
-                System.out.println("Uncomplete tasks: \n " + taskList.get(0) + " (Incomplete) " + taskList.get(1) + " (Incomplete) ");
+                System.out.println("Uncomplete tasks: \n " + taskList.get(0).getTitle() + " (Uncompleted) " + taskList.get(1).getTitle() + " (Uncompleted) ");
+
+                break;
+
+            case 4:
+                System.out.println("This is a list of your tasks that you have completed");
+
+                break;
+
+            case 5:
+                System.out.println("Which task would you like to mark as complete? \n 1. " + taskList.get(0).getTitle());
+
+                if (input.nextInt() == 1) {
+                    task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
+                }
+                System.out.println("Would you like to go back to the menu? \n 1. Yes");
+                if (input.nextInt() == 1) {
+
+                }
+                break;
+
+            case 6:
+                System.out.println("Which tasks would you like to remove? \n 1. " + taskList.get(0).getTitle());
+                if (input.nextInt() == 1) {
+//                    taskList.remove(0);
+                    System.out.println("Would you like to exit? \n 1. Yes ");
+                    if (input.nextInt() == 1) {
+                        selectionMenu();
+                    }
+
+
+                }
+                break;
+
+            case 7:
+                System.out.println("Which task would you like to edit? \n 1. " + taskList.get(0).getTitle());
+                if (input.nextInt() == 1) {
+                    task.setTitle(" ");
+                    System.out.println(" Task has been removed! Would you like to go back to the menu? \n 1. Yes ");
+                    if (input.nextInt() == 1) {
+                        selectionMenu();
+                    }
+                }
+                break;
+            case 8:
+                System.out.println(" Which task would you like to view? \n 1. " + taskList.get(0).getTitle());
+                if (input.nextInt() == 1) {
+                    System.out.println(" Here are your details: \n" +
+                            " Description - " + taskList.get(0).getTaskDetails() + " \n" +
+                            " DueDate - " + taskList.get(0).getDueDate());
+                    System.out.println(" Would you like to go back to the menu? \n 1. Yes");
+                    if (input.nextInt() == 1) {
+                        selectionMenu();
+                    }
+                }
+                break;
+
+            case 9:
+                System.out.println(" Closing Program...... ");
+                System.exit(0);
+
+
 
 
 
