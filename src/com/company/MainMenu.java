@@ -65,8 +65,12 @@ public class MainMenu {
                     case 2:
 
                         // Lists Task
+                        int location = 1;
                         System.out.println("These are your saved tasks: ");
                         System.out.println(task.getTitle());
+                        for ( int p = 0 ; p < taskList.size(); p++ )
+//
+                            System.out.println(taskList.get(p).getTitle());
                         System.out.println("Would you like to go back to the menu? \n 1. Yes ");
                         if (input.nextInt() == 1) {
                             selectionMenu();
@@ -81,8 +85,10 @@ public class MainMenu {
 
                     case 4:
                         System.out.println("This is a list of your tasks that you have completed");
+                        if (taskList.get(0).getTitle().equals(task.getTitle() + " (Completed) ")) {
+                            System.out.println(taskList.get(0).getTitle());
 
-
+                        }
                         break;
 
                     case 5:
@@ -94,7 +100,7 @@ public class MainMenu {
                         }
                         System.out.println("Would you like to go back to the menu? \n 1. Yes");
                         if (input.nextInt() == 1) {
-
+                            selectionMenu();
                         }
                         break;
 
