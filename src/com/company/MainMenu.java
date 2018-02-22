@@ -31,7 +31,7 @@ public class MainMenu {
                 switch (input.nextInt()) {
 
                     case 1:
-
+                        taskList.clear();
                         // Creating Task (Getting input from user)
                         System.out.println(" Please create a title ");
                         input.nextLine();
@@ -67,7 +67,7 @@ public class MainMenu {
                         // Lists Task
                         int location = 1;
                         System.out.println("These are your saved tasks: ");
-                        System.out.println(task.getTitle());
+//                        System.out.println(task.getTitle());
                         for ( int p = 0 ; p < taskList.size(); p++ )
 //
                             System.out.println(taskList.get(p).getTitle());
@@ -88,6 +88,7 @@ public class MainMenu {
                         if (taskList.get(0).getTitle().equals(task.getTitle() + " (Completed) ")) {
                             System.out.println(taskList.get(0).getTitle());
 
+
                         }
                         break;
 
@@ -96,6 +97,7 @@ public class MainMenu {
 
                         if (input.nextInt() == 1) {
                             task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
+
 
                         }
                         System.out.println("Would you like to go back to the menu? \n 1. Yes");
@@ -108,6 +110,9 @@ public class MainMenu {
                         // Removes task
                         System.out.println("Which tasks would you like to remove? \n 1. " + taskList.get(0).getTitle());
                         if (input.nextInt() == 1) {
+                            taskList.get(0).setTitle(" ");
+                            taskList.get(0).setDueDate(" ");
+                            taskList.get(0).setTaskDetails(" ");
 //                    taskList.remove(0);
                             System.out.println("Would you like to exit? \n 1. Yes ");
                             if (input.nextInt() == 1) {
