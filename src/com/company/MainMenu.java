@@ -94,12 +94,16 @@ public class MainMenu {
                         break;
 
                     case 5:
-                        System.out.println("Which task would you like to mark as complete? \n 1. " + taskList.get(0).getTitle());
+                        System.out.println("Which task would you like to mark as complete? \n" +
+                                " 1. " + taskList.get(0).getTitle() + " \n" +
+                                " 2. " + taskList.get(1).getTitle());
 
                         if (input.nextInt() == 1) {
                             task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
 
 
+                        } else if (input.nextInt() == 2) {
+                            task1.setTitle(taskList.get(1).getTitle() + " (Completed) ");
                         }
                         System.out.println("Would you like to go back to the menu? \n 1. Yes");
                         if (input.nextInt() == 1) {
