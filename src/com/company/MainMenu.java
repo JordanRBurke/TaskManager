@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
+    Tasks task1 = new Tasks();
     Tasks task = new Tasks();
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
@@ -35,7 +36,7 @@ public class MainMenu {
                         // Creating Task (Getting input from user)
                         System.out.println(" Please create a title ");
                         input.nextLine();
-                        task.setTitle(input.nextLine() + " (Uncomplete) ");
+                        task.setTitle(input.nextLine());
                         System.out.println(" Please enter a due date for said task ");
                         task.setDueDate(input.nextLine());
                         System.out.println("Please add task details for your task");
@@ -48,12 +49,12 @@ public class MainMenu {
 
                             System.out.println(" Please create a title ");
                             input.nextLine();
-                            task.setTitle(input.nextLine());
+                            task1.setTitle(input.nextLine());
                             System.out.println(" Please enter a due date for said task ");
-                            task.setDueDate(input.nextLine());
+                            task1.setDueDate(input.nextLine());
                             System.out.println("Please add task details for your task");
-                            task.setTaskDetails(input.nextLine());
-                            taskList.add(task);
+                            task1.setTaskDetails(input.nextLine());
+                            taskList.add(task1);
                             selectionMenu();
 
                         }
@@ -68,7 +69,7 @@ public class MainMenu {
                         int location = 1;
                         System.out.println("These are your saved tasks: ");
 //                        System.out.println(task.getTitle());
-                        for ( int p = 0 ; p < taskList.size(); p++ )
+                        for (int p = 0; p < taskList.size(); p++)
 //
                             System.out.println(taskList.get(p).getTitle());
                         System.out.println("Would you like to go back to the menu? \n 1. Yes ");
@@ -125,7 +126,9 @@ public class MainMenu {
 
                     case 7:
                         // Edits task
-                        System.out.println("Which task would you like to edit? \n 1. " + taskList.get(0).getTitle());
+                        System.out.println("Which task would you like to edit? \n" +
+                                " 1. " + taskList.get(0).getTitle() + " \n" +
+                                " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
                             System.out.println(" Which segment would you like to edit? \n" +
                                     " 1. Title \n" +
@@ -169,7 +172,9 @@ public class MainMenu {
                         break;
                     case 8:
                         // Allows user to view details
-                        System.out.println(" Which task would you like to view? \n 1. " + taskList.get(0).getTitle());
+                        System.out.println(" Which task would you like to view? \n" +
+                                " 1. " + taskList.get(0).getTitle() + " \n" +
+                                " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
                             System.out.println(" Here are your details: \n" +
                                     "" + " Description - " + taskList.get(0).getTaskDetails() + " \n" +
@@ -178,32 +183,44 @@ public class MainMenu {
                             if (input.nextInt() == 1) {
                                 selectionMenu();
                             }
-                        }
-                        break;
+                            if (input.nextInt() == 2) {
+                                System.out.println(" Here are your details: \n" +
+                                        "" + " Description - " + taskList.get(1).getTaskDetails() + " \n" +
+                                        " DueDate - " + taskList.get(1).getDueDate());
+                                System.out.println(" Would you like to go back to the menu? \n 1. Yes");
+                                if (input.nextInt() == 1) {
+                                    selectionMenu();
 
+
+                                }
+
+
+                            }
+                            break;
+
+
+
+                        }
                     case 9:
                         // Closes the program
                         System.out.println(" Closing Program...... ");
                         System.exit(0);
                         break;
 
-
                 }
-
             } catch (IndexOutOfBoundsException ime) {
                 System.out.println("Error, please make sure you put a valid number");
                 selectionMenu();
+
+
+
             }
-
-
-        } catch (InputMismatchException ime) {
-            System.out.println("Error, Make sure you input a number \n Make sure you also added a task before trying to view tasks");
+        } catch (IndexOutOfBoundsException ime) {
+            System.out.println("Error, please make sure you put a valid number");
             selectionMenu();
         }
     }
-
 }
-
 
 
 
