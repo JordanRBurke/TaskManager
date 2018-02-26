@@ -65,11 +65,12 @@ public class MainMenu {
 
                     case 2:
 
-                        // Lists Task
+                        // Lists tasks that user created in case 1
                         int location = 1;
                         System.out.println("These are your saved tasks: ");
 //                        System.out.println(task.getTitle());
                         for (int p = 0; p < taskList.size(); p++)
+                            // Lists the objects the user created in case 1
 //
                             System.out.println(taskList.get(p).getTitle());
                         System.out.println("Would you like to go back to the menu? \n 1. Yes ");
@@ -79,12 +80,13 @@ public class MainMenu {
                         break;
 
                     case 3:
-
+                        // Views uncompleted tasks the user has not checked off as completed in case 5
                         System.out.println("Uncomplete tasks: \n " + taskList.get(0).getTitle() + " (Uncompleted) " + taskList.get(1).getTitle() + " (Uncompleted) ");
 
                         break;
 
                     case 4:
+                        // Completed tasks in which the user sets in case 5
                         System.out.println("This is a list of your tasks that you have completed \n" +
                                 " 1. " + task.getCompletedTask() + " \n" +
                                 " Would you like to go to the menu? \n" +
@@ -97,6 +99,7 @@ public class MainMenu {
                         break;
 
                     case 5:
+                        // Marking the task completes adds it to case 4 (Only completed tasks)
                         System.out.println("Which task would you like to mark as complete? \n" +
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
@@ -139,20 +142,24 @@ public class MainMenu {
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
+                            // Asks what you want to edit about the title chosen
                             System.out.println(" Which segment would you like to edit? \n" +
                                     " 1. Title \n" +
                                     " 2. DueDate \n" +
                                     " 3. Description");
                             int userEdit = input.nextInt();
                             if (userEdit == 1) {
+                                // Allows you to edit the title
                                 System.out.println(" What would you like your new title to be? ");
                                 input.nextLine();
                                 taskList.get(0).setTitle(input.nextLine());
                                 System.out.println(" Would you like to change the DueDate (3) ? Or go to the menu (6)");
                                 if (input.nextInt() == 6) {
+                                    // Takes you back to the main menu
                                     selectionMenu();
                                 }
                             } else if (userEdit == 2) {
+                                // Edits the dueDate that you set in case 1 of the title you selected
                                 System.out.println(" What would you like your new DueDate to be? ");
                                 input.nextLine();
                                 taskList.get(0).setDueDate(input.nextLine());
@@ -163,6 +170,7 @@ public class MainMenu {
                                     taskList.get(0).setTaskDetails(input.nextLine());
                                     selectionMenu();
                                 } else if (userEdit == 6) {
+                                    // Takes user back to the main menu
                                     selectionMenu();
                                 }
 
@@ -185,19 +193,23 @@ public class MainMenu {
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
+                            // Views what user put down for case 1, but other details. Not just a title
                             System.out.println(" Here are your details: \n" +
                                     "" + " Description - " + taskList.get(0).getTaskDetails() + " \n" +
                                     " DueDate - " + taskList.get(0).getDueDate());
                             System.out.println(" Would you like to go back to the menu? \n 1. Yes");
                             if (input.nextInt() == 1) {
+                                // Takes user back to the main menu
                                 selectionMenu();
                             }
                             if (input.nextInt() == 2) {
+                                // Allows user to view the second task they made
                                 System.out.println(" Here are your details: \n" +
                                         "" + " Description - " + taskList.get(1).getTaskDetails() + " \n" +
                                         " DueDate - " + taskList.get(1).getDueDate());
                                 System.out.println(" Would you like to go back to the menu? \n 1. Yes");
                                 if (input.nextInt() == 1) {
+                                    // Takes user back to the main menu
                                     selectionMenu();
 
 
@@ -218,6 +230,7 @@ public class MainMenu {
 
                 }
             } catch (IndexOutOfBoundsException ime) {
+                // Catches issues due to user input
                 System.out.println("Error, please make sure you put a valid number");
                 selectionMenu();
 
@@ -225,6 +238,7 @@ public class MainMenu {
 
             }
         } catch (IndexOutOfBoundsException ime) {
+            // Catches issues due to user input
             System.out.println("Error, please make sure you put a valid number");
             selectionMenu();
         }
