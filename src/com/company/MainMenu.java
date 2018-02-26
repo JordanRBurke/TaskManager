@@ -85,12 +85,15 @@ public class MainMenu {
                         break;
 
                     case 4:
-                        System.out.println("This is a list of your tasks that you have completed");
-                        if (taskList.get(0).getTitle().equals(task.getTitle() + " (Completed) ")) {
-                            System.out.println(taskList.get(0).getTitle());
-
-
+                        System.out.println("This is a list of your tasks that you have completed \n" +
+                                " 1. " + task.getCompletedTask() + " \n" +
+                                " Would you like to go to the menu? \n" +
+                                " 1. Yes ");
+                        if (input.nextInt() == 1) {
+                            selectionMenu();
                         }
+
+
                         break;
 
                     case 5:
@@ -100,10 +103,12 @@ public class MainMenu {
 
                         if (input.nextInt() == 1) {
                             task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
+                            task.setCompletedTask(taskList.get(0).getTitle());
 
 
                         } else if (input.nextInt() == 2) {
                             task1.setTitle(taskList.get(1).getTitle() + " (Completed) ");
+                            task.setCompletedTask(taskList.get(1).getTitle());
                         }
                         System.out.println("Would you like to go back to the menu? \n 1. Yes");
                         if (input.nextInt() == 1) {

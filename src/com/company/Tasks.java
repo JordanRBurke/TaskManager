@@ -10,8 +10,15 @@ public class Tasks {
     String DueDate;
     String taskDetails;
     String dateCompleted;
+    String completedTask;
 
+    public String getCompletedTask() {
+        return completedTask;
+    }
 
+    public void setCompletedTask(String completedTask) {
+        this.completedTask = completedTask;
+    }
 
     public Scanner getInput() {
         return input;
