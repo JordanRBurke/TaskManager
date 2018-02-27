@@ -14,6 +14,9 @@ public class MainMenu {
     List<Tasks> taskList = new ArrayList();
 
 
+    /** Look up Rule of 3. Under normal circumstances, a method shouldn't be more than 30 lines long. This one is over 250 lines long. Split
+     * this functionality up into multiple methods.  */
+
     public void selectionMenu() {
 
 
@@ -29,6 +32,11 @@ public class MainMenu {
                 " 9. Exit task manager ");
         try {
             try {
+
+                /** To avoid unnecessary, stacking try/catch's, I recommend making your numerical values strings.
+                 * '1', '2', etc., because then you won't need any try/catch's. You'll be able to make anything a String without a crash,
+                 * '3', 'a', '!', you'll just have to set a default, 'if they don't enter any of these numerical strings, tell them to enter
+                 * a valid command', then use recursion to make it prompt the user again. */
                 switch (input.nextInt()) {
 
                     case 1:
@@ -36,6 +44,13 @@ public class MainMenu {
                         // Creating Task (Getting input from user)
                         System.out.println(" Please create a title ");
                         input.nextLine();
+
+
+                        /** Rather than making a member variable task (that's unnecessarily created every time the user creates a menu), it makes
+                         * more sense to make the object here. Task task = new Task(), then use methods that will populate the values. So,
+                         * you'll have a method called getTaskTitle() that has a Scanner in it and returns a String, based on what they enter for the title. Etc.
+                         * So you'd be all, Task task - new Task(getTaskTitle(), getTaskDetails(), getTaskDueDate()); and that'd make your task object and make
+                         * it very obvious what the code does. */
                         task.setTitle(input.nextLine());
                         System.out.println(" Please enter a due date for said task ");
                         task.setDueDate(input.nextLine());
@@ -81,6 +96,7 @@ public class MainMenu {
 
                     case 3:
                         // Views uncompleted tasks the user has not checked off as completed in case 5
+                        /** Change uncomplete to incomplete */
                         System.out.println("Uncomplete tasks: \n " + taskList.get(0).getTitle() + " (Uncompleted) " + taskList.get(1).getTitle() + " (Uncompleted) ");
 
                         break;
@@ -133,6 +149,11 @@ public class MainMenu {
                     case 6:
                         // Removes task
                         System.out.println("Which tasks would you like to remove? \n" +
+                                /** Not an efficient way to do this, as it limits the user's ability drastically. look at the arraylist workshop.
+                                 * it should create a for loop based on each task in the array, no matter how many there are, and when they enter a number
+                                 * to remove a task, you'll know to subtract 1 from it (since java starts at index 0), and to remove that particular task from
+                                 * your arraylist. */
+
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
@@ -159,6 +180,12 @@ public class MainMenu {
 
                     case 7:
                         // Edits task
+
+                        /** Not an efficient way to do this, as it limits the user's ability drastically. look at the arraylist workshop.
+                         * it should create a for loop based on each task in the array, no matter how many there are, and when they enter a number
+                         * to edit a task, you'll know to subtract 1 from it (since java starts at index 0), and to edit that particular task from
+                         * your arraylist. */
+
                         System.out.println("Which task would you like to edit? \n" +
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
@@ -211,6 +238,12 @@ public class MainMenu {
                     case 8:
                         // Allows user to view details
                         System.out.println(" Which task would you like to view? \n" +
+
+                                /** Not an efficient way to do this, as it limits the user's ability drastically. look at the arraylist workshop.
+                                 * it should create a for loop based on each task in the array, no matter how many there are, and when they enter a number
+                                 * to view a task, you'll know to subtract 1 from it (since java starts at index 0), and to view that particular task from
+                                 * your arraylist. */
+
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
