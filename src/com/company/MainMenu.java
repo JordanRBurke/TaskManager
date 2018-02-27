@@ -104,24 +104,37 @@ public class MainMenu {
                                 " 1. " + taskList.get(0).getTitle() + " \n" +
                                 " 2. " + taskList.get(1).getTitle());
 
-                        if (input.nextInt() == 1) {
+                        int inputCase5 = input.nextInt();
+
+                        if (inputCase5 == 1) {
                             task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
                             task.setCompletedTask(taskList.get(0).getTitle());
+                            System.out.println(" Would you like to go back to the main menu? \n" +
+                                    " 3. Yes");
+                            if (input.nextInt() == 3) {
+                                System.out.println(" Task has been marked completed! ");
+                                selectionMenu();
+                            }
 
 
-                        } else if (input.nextInt() == 2) {
+                        } else if (inputCase5 == 2) {
                             task1.setTitle(taskList.get(1).getTitle() + " (Completed) ");
                             task.setCompletedTask(taskList.get(1).getTitle());
+                            System.out.println(" Would you like to go back to the main menu? \n" +
+                                    " 3. Yes");
+                            if (input.nextInt() == 3) {
+                                System.out.println(" Task has been marked completed! ");
+                                selectionMenu();
+                            }
                         }
-                        System.out.println("Would you like to go back to the menu? \n 1. Yes");
-                        if (input.nextInt() == 1) {
-                            selectionMenu();
-                        }
+
                         break;
 
                     case 6:
                         // Removes task
-                        System.out.println("Which tasks would you like to remove? \n 1. " + taskList.get(0).getTitle());
+                        System.out.println("Which tasks would you like to remove? \n" +
+                                " 1. " + taskList.get(0).getTitle() + " \n" +
+                                " 2. " + taskList.get(1).getTitle());
                         if (input.nextInt() == 1) {
                             taskList.get(0).setTitle(" ");
                             taskList.get(0).setDueDate(" ");
@@ -133,6 +146,14 @@ public class MainMenu {
                             }
 
 
+                        } else if (input.nextInt() == 2) {
+                            taskList.get(1).setTitle(" ");
+                            taskList.get(1).setDueDate(" ");
+                            taskList.get(1).setTaskDetails(" ");
+                            System.out.println(" Would you like to go back to the main menu? \n 1. Yes");
+                            if (input.nextInt() == 1) {
+                                selectionMenu();
+                            }
                         }
                         break;
 
