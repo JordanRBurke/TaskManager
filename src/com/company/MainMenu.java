@@ -105,7 +105,7 @@ public class MainMenu {
                                 " 2. " + taskList.get(1).getTitle());
 
                         int inputCase5 = input.nextInt();
-
+                        // Mark 1 as completed
                         if (inputCase5 == 1) {
                             task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
                             task.setCompletedTask(taskList.get(0).getTitle());
@@ -116,7 +116,7 @@ public class MainMenu {
                                 selectionMenu();
                             }
 
-
+                        //mark 2 as completed
                         } else if (inputCase5 == 2) {
                             task1.setTitle(taskList.get(1).getTitle() + " (Completed) ");
                             task.setCompletedTask(taskList.get(1).getTitle());
@@ -145,7 +145,7 @@ public class MainMenu {
                                 selectionMenu();
                             }
 
-
+                        // Removes task 2
                         } else if (input.nextInt() == 2) {
                             taskList.get(1).setTitle(" ");
                             taskList.get(1).setDueDate(" ");
