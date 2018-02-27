@@ -16,6 +16,10 @@ public class Tasks {
         return completedTask;
     }
 
+
+    /** You need a constructor for tasks. Tasks should have a title, duedate, detail, isCompleted, date completed, etc.
+     * And when you create a Task elsewhere in your app, you'd access these values via getters. */
+
     public void setCompletedTask(String completedTask) {
         this.completedTask = completedTask;
     }
