@@ -13,7 +13,6 @@ public class MainMenu {
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
 
-
     public void selectionMenu() {
 
 
@@ -28,35 +27,12 @@ public class MainMenu {
                 " 8. View task details \n" +
                 " 9. Exit task manager ");
 
+        try {
         switch (input.nextInt()) {
 
+
             case 1:
-                taskList.clear();
-                // Creating Task (Getting input from user)
-                System.out.println(" Please create a title ");
-                input.nextLine();
-                task.setTitle(input.nextLine());
-                System.out.println(" Please enter a due date for said task ");
-                task.setDueDate(input.nextLine());
-                System.out.println("Please add task details for your task");
-                task.setTaskDetails(input.nextLine());
-                taskList.add(task);
-                System.out.println("What would you like to do next? \n 1. Leave \n 2. Create another task ");
-                if (input.nextInt() == 1) {
-                    selectionMenu();
-                } else {
-
-                    System.out.println(" Please create a title ");
-                    input.nextLine();
-                    task1.setTitle(input.nextLine());
-                    System.out.println(" Please enter a due date for said task ");
-                    task1.setDueDate(input.nextLine());
-                    System.out.println("Please add task details for your task");
-                    task1.setTaskDetails(input.nextLine());
-                    taskList.add(task1);
-                    selectionMenu();
-
-                }
+                createTask();
 
             case 2:
                 listTask();
@@ -85,9 +61,46 @@ public class MainMenu {
                 System.exit(0);
                 break;
 
-
+        }
+        } catch (InputMismatchException ime) {
+            System.out.println("Invalid input");
+            selectionMenu();
         }
     }
+        public void createTask() {
+            taskList.clear();
+            // Creating Task (Getting input from user)
+            System.out.println(" Please create a title ");
+            input.nextLine();
+            task.setTitle(input.nextLine());
+            System.out.println(" Please enter a due date for said task ");
+            task.setDueDate(input.nextLine());
+            System.out.println("Please add task details for your task");
+            task.setTaskDetails(input.nextLine());
+            taskList.add(task);
+            System.out.println("What would you like to do next? \n 1. Leave \n 2. Create another task ");
+            if (input.nextInt() == 1) {
+                selectionMenu();
+            } else {
+
+                System.out.println(" Please create a title ");
+                input.nextLine();
+                task1.setTitle(input.nextLine());
+                System.out.println(" Please enter a due date for said task ");
+                task1.setDueDate(input.nextLine());
+                System.out.println("Please add task details for your task");
+                task1.setTaskDetails(input.nextLine());
+                taskList.add(task1);
+                selectionMenu();
+
+            }
+
+
+        }
+
+
+
+
         public void listTask() {
 
 
@@ -163,31 +176,17 @@ public class MainMenu {
 
             public void removeTask() {
 
-                // Removes task
-                System.out.println("Which tasks would you like to remove? \n" +
-                        " 1. " + taskList.get(0).getTitle() + " \n" +
-                        " 2. " + taskList.get(1).getTitle());
-                if (input.nextInt() == 1) {
-                    taskList.get(0).setTitle(" ");
-                    taskList.get(0).setDueDate(" ");
-                    taskList.get(0).setTaskDetails(" ");
-//                    taskList.remove(0);
-                    System.out.println("Would you like to exit? \n 1. Yes ");
-                    if (input.nextInt() == 1) {
-                        selectionMenu();
-                    }
-
-                    // Removes task 2
-                } else if (input.nextInt() == 2) {
-                    taskList.get(1).setTitle(" ");
-                    taskList.get(1).setDueDate(" ");
-                    taskList.get(1).setTaskDetails(" ");
-                    System.out.println(" Would you like to go back to the main menu? \n 1. Yes");
-                    if (input.nextInt() == 1) {
-                        selectionMenu();
-                    }
+                int pushUp = 1;
+                System.out.println(" Which one would you like to remove? ");
+                for (int l = 0 ; l < taskList.size() ; l++) {
+                    System.out.println(pushUp + " " + taskList.get(l).getTitle());
+                    pushUp++;
                 }
-
+                if (input.nextInt() == 1) {
+                    taskList.remove(0);
+                } else if (input.nextInt() == 2) {
+                    taskList.remove(1);
+                }
 
             }
 
