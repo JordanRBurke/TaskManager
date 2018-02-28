@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96a1a6b7-fe66-48b4-a24f-5ee6a17d6957" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/com/company/MainMenu.java" afterPath="$PROJECT_DIR$/src/com/company/MainMenu.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+            <state relative-caret-position="3093">
+              <caret line="263" column="36" lean-forward="true" selection-start-line="263" selection-start-column="36" selection-end-line="263" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -385,8 +384,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        <state relative-caret-position="3093">
+          <caret line="263" column="36" lean-forward="true" selection-start-line="263" selection-start-column="36" selection-end-line="263" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

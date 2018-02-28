@@ -15,7 +15,7 @@ public class MainMenu {
 
     public void selectionMenu() {
 
-
+        try {
         System.out.println("Task Manager: \n" +
                 " 1. Create Task \n" +
                 " 2. List Tasks \n" +
@@ -27,13 +27,12 @@ public class MainMenu {
                 " 8. View task details \n" +
                 " 9. Exit task manager ");
 
-        try {
-        switch (input.nextInt()) {
 
+        switch (input.nextInt()) {
 
             case 1:
                 createTask();
-
+                break;
             case 2:
                 listTask();
                 break;
@@ -94,12 +93,7 @@ public class MainMenu {
                 selectionMenu();
 
             }
-
-
         }
-
-
-
 
         public void listTask() {
 
@@ -187,61 +181,88 @@ public class MainMenu {
                 } else if (input.nextInt() == 2) {
                     taskList.remove(1);
                 }
+                System.out.println(" Would you like to go back to the menu? \n 1. Yes ");
+                if (input.nextInt() == 1) {
+                    selectionMenu();
+                }
+
 
             }
 
             public void editTask() {
 
                 // Edits task
-                System.out.println("Which task would you like to edit? \n" +
-                        " 1. " + taskList.get(0).getTitle() + " \n" +
-                        " 2. " + taskList.get(1).getTitle());
+                int pushUp = 1;
+                System.out.println(" Which one would you like to edit? ");
+                for (int l = 0 ; l < taskList.size() ; l++) {
+                    System.out.println(pushUp + " " + taskList.get(l).getTitle());
+                    pushUp++;
+                }
                 if (input.nextInt() == 1) {
-                    // Asks what you want to edit about the title chosen
-                    System.out.println(" Which segment would you like to edit? \n" +
-                            " 1. Title \n" +
-                            " 2. DueDate \n" +
-                            " 3. Description");
-                    int userEdit = input.nextInt();
-                    if (userEdit == 1) {
-                        // Allows you to edit the title
-                        System.out.println(" What would you like your new title to be? ");
-                        input.nextLine();
-                        taskList.get(0).setTitle(input.nextLine());
-                        System.out.println(" Would you like to change the DueDate (3) ? Or go to the menu (6)");
-                        if (input.nextInt() == 6) {
-                            // Takes you back to the main menu
-                            selectionMenu();
-                        }
-                    } else if (userEdit == 2) {
-                        // Edits the dueDate that you set in case 1 of the title you selected
-                        System.out.println(" What would you like your new DueDate to be? ");
-                        input.nextLine();
-                        taskList.get(0).setDueDate(input.nextLine());
-                        System.out.println(" Would you like to change the Description? (3) ? Or go to the menu (6)");
-                        if (userEdit == 3) {
-                            System.out.println(" What would you like your new description to say? ");
-                            input.nextLine();
-                            taskList.get(0).setTaskDetails(input.nextLine());
-                            selectionMenu();
-                        } else if (userEdit == 6) {
-                            // Takes user back to the main menu
-                            selectionMenu();
-                        }
-
-                    } else if (userEdit == 3) {
-                        System.out.println(" What would you like your new description to be? ");
-                        input.nextLine();
-                        taskList.get(0).setTaskDetails(input.nextLine());
-                        System.out.println(" Your description has been saved! ");
-                        selectionMenu();
-                    }
-                    System.out.println(" Would you like to go back to the menu? \n 1. Yes ");
-                    if (input.nextInt() == 1) {
-                        selectionMenu();
+                    System.out.println(" 1. " + taskList.get(0).getTitle() + " \n " +
+                            " 2. " + taskList.get(0).getDueDate() + " \n" +
+                            " 3. " + taskList.get(0).getTaskDetails());
+                    System.out.println(" Which sub option would you like to edit? ");
+                    int inputForDetails = input.nextInt();
+                    if (inputForDetails == 1) {
+                        editTaskExtendedTitle();
+                    } else if (inputForDetails == 2) {
+                        editTaskExtendedDueDate();
+                    } else if (inputForDetails == 3) {
+                        editTaskExtendedTaskDetails();
                     }
                 }
 
+            }
+
+            public void editTaskExtendedTitle() {
+                System.out.println(" What would you like your new title to be? ");
+                input.nextLine();
+                taskList.get(0).setTitle(input.nextLine());
+                System.out.println(" Would you like to change your \n 1. DueDate \n 2. TaskDetails \n 3. menu");
+                int inputTaskTitle = input.nextInt();
+                if (inputTaskTitle == 1) {
+                    editTaskExtendedDueDate();
+                } else if (inputTaskTitle == 2) {
+                    editTaskExtendedTaskDetails();
+                } else {
+                    selectionMenu();
+                }
+
+
+            }
+
+            public void editTaskExtendedDueDate() {
+                System.out.println(" What would you like your new DueDate to be? ");
+                input.nextLine();
+                taskList.get(0).setTitle(input.nextLine());
+                System.out.println(" What would you like to do next? \n 1. Edit Title \n 2. Edit TaskDetails \n 3. menu ");
+                int inputEditDueDate = input.nextInt();
+                if (inputEditDueDate == 1) {
+                    editTaskExtendedTitle();
+                } else if (inputEditDueDate == 2) {
+                    editTaskExtendedTaskDetails();
+                } else {
+                    selectionMenu();
+                }
+
+
+
+            }
+
+            public void editTaskExtendedTaskDetails() {
+                System.out.println(" What would you like your new details to be called? ");
+                input.nextLine();
+                taskList.get(0).setTitle(input.nextLine());
+                System.out.println(" Which would you like to do now? \n 1. Edit Title \n Edit Task DueDate \n 3. menu");
+                int inputTaskDetails = input.nextInt();
+                if (inputTaskDetails == 1) {
+                    editTaskExtendedTitle();
+                } else if (inputTaskDetails == 2) {
+                    editTaskExtendedDueDate();
+                } else {
+                    selectionMenu();
+                }
 
             }
 
@@ -273,32 +294,9 @@ public class MainMenu {
 
 
                         }
-
-
                     }
-
-
             }
-
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
 
 
