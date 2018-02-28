@@ -29,6 +29,7 @@ public class MainMenu {
 
 
         switch (input.nextInt()) {
+            // Intersection that connects all the methods to the cases
 
             case 1:
                 createTask();
@@ -170,6 +171,7 @@ public class MainMenu {
 
             public void removeTask() {
 
+                // Removes task by removing the task from the arrayList
                 int pushUp = 1;
                 System.out.println(" Which one would you like to remove? ");
                 for (int l = 0 ; l < taskList.size() ; l++) {
@@ -199,7 +201,7 @@ public class MainMenu {
                     pushUp++;
                 }
                 if (input.nextInt() == 1) {
-                    System.out.println(" 1. " + taskList.get(0).getTitle() + " \n " +
+                    System.out.println(" 1. " + taskList.get(0).getTitle() + " \n" +
                             " 2. " + taskList.get(0).getDueDate() + " \n" +
                             " 3. " + taskList.get(0).getTaskDetails());
                     System.out.println(" Which sub option would you like to edit? ");
@@ -216,6 +218,8 @@ public class MainMenu {
             }
 
             public void editTaskExtendedTitle() {
+
+                // Extension from the edit task for titles only
                 System.out.println(" What would you like your new title to be? ");
                 input.nextLine();
                 taskList.get(0).setTitle(input.nextLine());
@@ -233,6 +237,8 @@ public class MainMenu {
             }
 
             public void editTaskExtendedDueDate() {
+
+                // extension of edit task for DueDate
                 System.out.println(" What would you like your new DueDate to be? ");
                 input.nextLine();
                 taskList.get(0).setTitle(input.nextLine());
@@ -251,10 +257,12 @@ public class MainMenu {
             }
 
             public void editTaskExtendedTaskDetails() {
+
+                // edit task extension for task details
                 System.out.println(" What would you like your new details to be called? ");
                 input.nextLine();
                 taskList.get(0).setTitle(input.nextLine());
-                System.out.println(" Which would you like to do now? \n 1. Edit Title \n Edit Task DueDate \n 3. menu");
+                System.out.println(" Which would you like to do now? \n 1. Edit Title \n 2. Edit Task DueDate \n 3. menu");
                 int inputTaskDetails = input.nextInt();
                 if (inputTaskDetails == 1) {
                     editTaskExtendedTitle();
