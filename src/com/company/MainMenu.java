@@ -2,12 +2,12 @@ package com.company;
 
 import javafx.concurrent.Task;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class MainMenu {
+    Calendar timeCompleted = Calendar.getInstance();
+
     Tasks task1 = new Tasks();
     Tasks task = new Tasks();
     Scanner input = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class MainMenu {
                 " 8. View task details \n" +
                 " 9. Exit task manager ");
 
-        input.nextInt();
+
         switch (input.nextInt()) {
             // Intersection that connects all the methods to the cases
 
@@ -76,9 +76,6 @@ public class MainMenu {
         }
     }
 
-
-
-
         public void createTask() {
             taskList.clear();
             // Creating Task (Getting input from user)
@@ -94,16 +91,16 @@ public class MainMenu {
             if (input.nextInt() == 1) {
                 selectionMenu();
             } else {
-
-                System.out.println(" Please create a title ");
-                input.nextLine();
-                task1.setTitle(input.nextLine());
-                System.out.println(" Please enter a due date for said task ");
-                task1.setDueDate(input.nextLine());
-                System.out.println("Please add task details for your task");
-                task1.setTaskDetails(input.nextLine());
-                taskList.add(task1);
-                selectionMenu();
+                  createTask();
+//                System.out.println(" Please create a title ");
+//                input.nextLine();
+//                task1.setTitle(input.nextLine());
+//                System.out.println(" Please enter a due date for said task ");
+//                task1.setDueDate(input.nextLine());
+//                System.out.println("Please add task details for your task");
+//                task1.setTaskDetails(input.nextLine());
+//                taskList.add(task1);
+//                selectionMenu();
 
             }
         }
@@ -158,7 +155,10 @@ public class MainMenu {
                 int inputCase5 = input.nextInt();
                 // Mark 1 as completed
                 if (inputCase5 == 1) {
-                    task.setTitle(taskList.get(0).getTitle() + " (Completed) ");
+                    // Adds time to completed task
+                    timeCompleted.add(Calendar.DATE, 1);
+                    SimpleDateFormat dateCompleteFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    task.setTitle(taskList.get(0).getTitle() + " Completed: " + dateCompleteFormat.format(timeCompleted.getTime()));
                     task.setCompletedTask(taskList.get(0).getTitle());
                     System.out.println(" Would you like to go back to the main menu? \n" +
                             " 3. Yes");
@@ -169,7 +169,10 @@ public class MainMenu {
 
                     //mark 2 as completed
                 } else if (inputCase5 == 2) {
-                    task1.setTitle(taskList.get(1).getTitle() + " (Completed) ");
+                    // adds time to completed task
+                    timeCompleted.add(Calendar.DATE, 1);
+                    SimpleDateFormat dateCompleteFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    task1.setTitle(taskList.get(1).getTitle() + " Completed: " + dateCompleteFormat.format(timeCompleted.getTime()));
                     task.setCompletedTask(taskList.get(1).getTitle());
                     System.out.println(" Would you like to go back to the main menu? \n" +
                             " 3. Yes");
