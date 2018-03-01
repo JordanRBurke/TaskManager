@@ -8,14 +8,14 @@ import java.util.*;
 public class MainMenu {
     Calendar timeCompleted = Calendar.getInstance();
 
-    Tasks task1 = new Tasks();
-    Tasks task = new Tasks();
+    Tasks task;
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
-
+    int pushUp = 1;
     public void selectionMenu() {
 
         try {
+            System.out.println((char)27 + "[36m");
         System.out.println("Task Manager: \n" +
                 " 1. Create Task \n" +
                 " 2. List Tasks \n" +
@@ -77,31 +77,24 @@ public class MainMenu {
     }
 
         public void createTask() {
-            taskList.clear();
+//            taskList.clear();
+
             // Creating Task (Getting input from user)
             System.out.println(" Please create a title ");
             input.nextLine();
-            task.setTitle(input.nextLine());
+            String title = input.nextLine();
             System.out.println(" Please enter a due date for said task ");
-            task.setDueDate(input.nextLine());
+            String dueDate = input.nextLine();
             System.out.println("Please add task details for your task");
-            task.setTaskDetails(input.nextLine());
+            String taskDetails = input.nextLine();
+            task = new Tasks(title, dueDate, taskDetails);
+            task.setUncompleteTask(task.getTitle());
             taskList.add(task);
             System.out.println("What would you like to do next? \n 1. Leave \n 2. Create another task ");
             if (input.nextInt() == 1) {
                 selectionMenu();
             } else {
                   createTask();
-//                System.out.println(" Please create a title ");
-//                input.nextLine();
-//                task1.setTitle(input.nextLine());
-//                System.out.println(" Please enter a due date for said task ");
-//                task1.setDueDate(input.nextLine());
-//                System.out.println("Please add task details for your task");
-//                task1.setTaskDetails(input.nextLine());
-//                taskList.add(task1);
-//                selectionMenu();
-
             }
         }
 
@@ -127,7 +120,10 @@ public class MainMenu {
 
             public void viewUncompletedTasks() {
                 // Views uncompleted tasks the user has not checked off as completed in case 5
-                System.out.println("Incomplete tasks: \n " + taskList.get(0).getTitle() + " (Incomplete) " + taskList.get(1).getTitle() + " (Uncompleted) ");
+                for (int l = 0 ; l < taskList.size() ; l++) {
+                    System.out.println(pushUp + " " + taskList.get(l).getIncompleteTask());
+                    pushUp++;
+                }
                 selectionMenu();
 
 
@@ -148,9 +144,12 @@ public class MainMenu {
             public void markCompletedTasks() {
 
                 // Marking the task completes adds it to case 4 (Only completed tasks)
-                System.out.println("Which task would you like to mark as complete? \n" +
-                        " 1. " + taskList.get(0).getTitle() + " \n" +
-                        " 2. " + taskList.get(1).getTitle());
+                System.out.println("Which task would you like to mark as complete?");
+
+                for (int l = 0 ; l < taskList.size() ; l++) {
+                    System.out.println(pushUp + " " + taskList.get(l).getTitle());
+                    pushUp++;
+                }
 
                 int inputCase5 = input.nextInt();
                 // Mark 1 as completed
@@ -172,7 +171,7 @@ public class MainMenu {
                     // adds time to completed task
                     timeCompleted.add(Calendar.DATE, 1);
                     SimpleDateFormat dateCompleteFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    task1.setTitle(taskList.get(1).getTitle() + " Completed: " + dateCompleteFormat.format(timeCompleted.getTime()));
+                    task.setTitle(taskList.get(1).getTitle() + " Completed: " + dateCompleteFormat.format(timeCompleted.getTime()));
                     task.setCompletedTask(taskList.get(1).getTitle());
                     System.out.println(" Would you like to go back to the main menu? \n" +
                             " 3. Yes");
@@ -190,7 +189,7 @@ public class MainMenu {
             public void removeTask() {
 
                 // Removes task by removing the task from the arrayList
-                int pushUp = 1;
+
                 System.out.println(" Which one would you like to remove? ");
                 for (int l = 0 ; l < taskList.size() ; l++) {
                     System.out.println(pushUp + " " + taskList.get(l).getTitle());
@@ -212,7 +211,7 @@ public class MainMenu {
             public void editTask() {
 
                 // Edits task
-                int pushUp = 1;
+
                 System.out.println(" Which one would you like to edit? ");
                 for (int l = 0 ; l < taskList.size() ; l++) {
                     System.out.println(pushUp + " " + taskList.get(l).getTitle());
@@ -295,9 +294,12 @@ public class MainMenu {
             public void viewTaskDetails() {
 
                 // Allows user to view details
-                System.out.println(" Which task would you like to view? \n" +
-                        " 1. " + taskList.get(0).getTitle() + " \n" +
-                        " 2. " + taskList.get(1).getTitle());
+                System.out.println(" Which task would you like to view?");
+                int pushUp = 1;
+                for (int l = 0 ; l < taskList.size() ; l++) {
+                    System.out.println(pushUp + " " + taskList.get(l).getTitle());
+                    pushUp++;
+                }
                 if (input.nextInt() == 1) {
                     // Views what user put down for case 1, but other details. Not just a title
                     System.out.println(" Here are your details: \n" +

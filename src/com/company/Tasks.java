@@ -11,6 +11,13 @@ public class Tasks {
     String taskDetails;
     String dateCompleted;
     String completedTask;
+    String IncompleteTask;
+
+    public Tasks(String title, String dueDate, String taskDetails) {
+        this.title = title;
+        DueDate = dueDate;
+        this.taskDetails = taskDetails;
+    }
 
     public String getCompletedTask() {
         return completedTask;
@@ -58,6 +65,14 @@ public class Tasks {
 
     public void setDateCompleted(String dateCompleted) {
         this.dateCompleted = dateCompleted;
+    }
+
+    public String getIncompleteTask() {
+        return IncompleteTask;
+    }
+
+    public void setUncompleteTask(String IncompleteTask) {
+        this.IncompleteTask = IncompleteTask;
     }
 }
 
