@@ -27,7 +27,7 @@ public class MainMenu {
                 " 8. View task details \n" +
                 " 9. Exit task manager ");
 
-
+        input.nextInt();
         switch (input.nextInt()) {
             // Intersection that connects all the methods to the cases
 
@@ -60,13 +60,25 @@ public class MainMenu {
                 System.out.println(" Closing Program...... ");
                 System.exit(0);
                 break;
+            default:
+                System.out.println(" Please put a valid number ");
+                selectionMenu();
+                break;
+
 
         }
+
         } catch (InputMismatchException ime) {
-            System.out.println("Invalid input");
+            input.nextLine();
+            System.out.println("Invalid input ");
             selectionMenu();
+
         }
     }
+
+
+
+
         public void createTask() {
             taskList.clear();
             // Creating Task (Getting input from user)
@@ -103,14 +115,17 @@ public class MainMenu {
                     int location = 1;
                     System.out.println("These are your saved tasks: ");
 //                        System.out.println(task.getTitle());
-                    for (int p = 0; p < taskList.size(); p++)
+                    for (int p = 0; p < taskList.size(); p++) {
                         // Lists the objects the user created in case 1
-//
                         System.out.println(taskList.get(p).getTitle());
-                    System.out.println("Would you like to go back to the menu? \n 1. Yes ");
-                    if (input.nextInt() == 1) {
-                        selectionMenu();
+//
                     }
+
+                        System.out.println("Would you like to go back to the menu? \n 1. Yes ");
+                        if (input.nextInt() == 1) {
+                            selectionMenu();
+                        }
+
             }
 
             public void viewUncompletedTasks() {
