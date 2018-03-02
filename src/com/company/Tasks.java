@@ -12,6 +12,7 @@ public class Tasks {
     String dateCompleted;
     String completedTask;
     String IncompleteTask;
+    String taskPullValue;
 
     public Tasks(String title, String dueDate, String taskDetails) {
         this.title = title;
@@ -73,6 +74,14 @@ public class Tasks {
 
     public void setUncompleteTask(String IncompleteTask) {
         this.IncompleteTask = IncompleteTask;
+    }
+
+    public String getTaskPullValue() {
+        return taskPullValue;
+    }
+
+    public void setTaskPullValue(String taskPullValue) {
+        this.taskPullValue = taskPullValue;
     }
 }
 
