@@ -11,10 +11,11 @@ public class MainMenu {
     Tasks task;
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
-    int pushUp = 1;
+
     public void selectionMenu() {
 
         try {
+
             System.out.println((char)27 + "[36m");
         System.out.println("Task Manager: \n" +
                 " 1. Create Task \n" +
@@ -88,7 +89,7 @@ public class MainMenu {
             System.out.println("Please add task details for your task");
             String taskDetails = input.nextLine();
             task = new Tasks(title, dueDate, taskDetails);
-            task.setUncompleteTask(task.getTitle());
+            task.setUncompleteTask(task.getTitle() + " (Incomplete) ");
             taskList.add(task);
             System.out.println("What would you like to do next? \n 1. Leave \n 2. Create another task ");
             if (input.nextInt() == 1) {
@@ -120,11 +121,16 @@ public class MainMenu {
 
             public void viewUncompletedTasks() {
                 // Views uncompleted tasks the user has not checked off as completed in case 5
+                int pushUp = 1;
                 for (int l = 0 ; l < taskList.size() ; l++) {
                     System.out.println(pushUp + " " + taskList.get(l).getIncompleteTask());
                     pushUp++;
                 }
-                selectionMenu();
+                System.out.println("Would you like to go back to the menu? \n 1. Yes");
+                if (input.nextInt() == 1) {
+                    selectionMenu();
+                }
+
 
 
             }
@@ -145,7 +151,7 @@ public class MainMenu {
 
                 // Marking the task completes adds it to case 4 (Only completed tasks)
                 System.out.println("Which task would you like to mark as complete?");
-
+                int pushUp = 1;
                 for (int l = 0 ; l < taskList.size() ; l++) {
                     System.out.println(pushUp + " " + taskList.get(l).getTitle());
                     pushUp++;
@@ -179,6 +185,18 @@ public class MainMenu {
                         System.out.println(" Task has been marked completed! ");
                         selectionMenu();
                     }
+                } else if (inputCase5 == 3) {
+                    // adds time to completed task
+                    timeCompleted.add(Calendar.DATE, 1);
+                    SimpleDateFormat dateCompleteFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    task.setTitle(taskList.get(2).getTitle() + " Completed: " + dateCompleteFormat.format(timeCompleted.getTime()));
+                    task.setCompletedTask(taskList.get(2).getTitle());
+                    System.out.println(" Would you like to go back to the main menu? \n" +
+                            " 3. Yes");
+                    if (input.nextInt() == 3) {
+                        System.out.println(" Task has been marked completed! ");
+                        selectionMenu();
+                    }
                 }
 
 
@@ -189,7 +207,7 @@ public class MainMenu {
             public void removeTask() {
 
                 // Removes task by removing the task from the arrayList
-
+                int pushUp = 1;
                 System.out.println(" Which one would you like to remove? ");
                 for (int l = 0 ; l < taskList.size() ; l++) {
                     System.out.println(pushUp + " " + taskList.get(l).getTitle());
@@ -213,6 +231,7 @@ public class MainMenu {
                 // Edits task
 
                 System.out.println(" Which one would you like to edit? ");
+                int pushUp = 1;
                 for (int l = 0 ; l < taskList.size() ; l++) {
                     System.out.println(pushUp + " " + taskList.get(l).getTitle());
                     pushUp++;
@@ -258,7 +277,7 @@ public class MainMenu {
                 // extension of edit task for DueDate
                 System.out.println(" What would you like your new DueDate to be? ");
                 input.nextLine();
-                taskList.get(0).setTitle(input.nextLine());
+                taskList.get(0).setDueDate(input.nextLine());
                 System.out.println(" What would you like to do next? \n 1. Edit Title \n 2. Edit TaskDetails \n 3. menu ");
                 int inputEditDueDate = input.nextInt();
                 if (inputEditDueDate == 1) {
@@ -278,7 +297,7 @@ public class MainMenu {
                 // edit task extension for task details
                 System.out.println(" What would you like your new details to be called? ");
                 input.nextLine();
-                taskList.get(0).setTitle(input.nextLine());
+                taskList.get(0).setTaskDetails(input.nextLine());
                 System.out.println(" Which would you like to do now? \n 1. Edit Title \n 2. Edit Task DueDate \n 3. menu");
                 int inputTaskDetails = input.nextInt();
                 if (inputTaskDetails == 1) {
