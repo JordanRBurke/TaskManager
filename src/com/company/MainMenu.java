@@ -1,7 +1,8 @@
 package com.company;
 
 import javafx.concurrent.Task;
-
+import java.io.*;
+import java.io.BufferedWriter;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -12,9 +13,14 @@ public class MainMenu {
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
 
-    public void selectionMenu() {
+    BufferedWriter text;
+
+    public void selectionMenu() throws FileNotFoundException, IOException {
 
         try {
+            File newFile = new File("Testing.RTF");
+            text = new BufferedWriter(new FileWriter("Testing.RTF",true));
+            Scanner fileStalker = new Scanner(newFile);
 
             System.out.println((char) 27 + "[36m");
             System.out.println("Task Manager: \n" +
@@ -69,6 +75,13 @@ public class MainMenu {
 
             }
 
+            text.write("");
+
+            text.newLine();
+
+            text.close();
+
+
         } catch (InputMismatchException ime) {
             input.nextLine();
             System.out.println("Invalid input ");
@@ -77,7 +90,7 @@ public class MainMenu {
         }
     }
 
-    public void createTask() {
+    public void createTask() throws IOException{
 //            taskList.clear();
 
         // Creating Task (Getting input from user)
@@ -99,7 +112,7 @@ public class MainMenu {
         }
     }
 
-    public void listTask() {
+    public void listTask() throws IOException{
 
 
         // Lists tasks that user created in case 1
@@ -119,7 +132,7 @@ public class MainMenu {
 
     }
 
-    public void viewUncompletedTasks() {
+    public void viewUncompletedTasks() throws IOException{
         // Views uncompleted tasks the user has not checked off as completed in case 5
         int pushUp = 1;
         for (int l = 0; l < taskList.size(); l++) {
@@ -134,7 +147,7 @@ public class MainMenu {
 
     }
 
-    public void listOfTasksComplete() {
+    public void listOfTasksComplete() throws IOException{
 
         // Completed tasks in which the user sets in case 5
         int pushUp = 1;
@@ -151,7 +164,7 @@ public class MainMenu {
         }
     }
 
-    public void markCompletedTasks() {
+    public void markCompletedTasks() throws IOException{
 
         // Marking the task completes adds it to case 4 (Only completed tasks)
         System.out.println("Which task would you like to mark as complete?");
@@ -168,7 +181,7 @@ public class MainMenu {
         selectionMenu();
 
     }
-        public void removeTask () {
+        public void removeTask () throws IOException{
 
             // Removes task by removing the task from the arrayList
             int pushUp = 1;
@@ -188,7 +201,7 @@ public class MainMenu {
 
 
 
-            public void editTask() {
+            public void editTask() throws IOException{
 
                 // Edits task
 
