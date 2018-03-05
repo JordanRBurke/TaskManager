@@ -18,9 +18,9 @@ public class MainMenu {
     public void selectionMenu() throws FileNotFoundException, IOException {
 
         try {
-            File newFile = new File("Testing.RTF");
-            text = new BufferedWriter(new FileWriter("Testing.RTF",true));
-            Scanner fileStalker = new Scanner(newFile);
+//            File newFile = new File("Testing.RTF");
+//            text = new BufferedWriter(new FileWriter("Testing.RTF",true));
+//            Scanner fileStalker = new Scanner(newFile);
 
             System.out.println((char) 27 + "[36m");
             System.out.println("Task Manager: \n" +
@@ -64,6 +64,8 @@ public class MainMenu {
                     break;
                 case 9:
                     // Closes the program
+                    FileSerialize fileSave = new FileSerialize();
+                    fileSave.steralizeThis();
                     System.out.println(" Closing Program...... ");
                     System.exit(0);
                     break;
@@ -75,11 +77,11 @@ public class MainMenu {
 
             }
 
-            text.write("");
-
-            text.newLine();
-
-            text.close();
+//            text.write("");
+//
+//            text.newLine();
+//
+//            text.close();
 
 
         } catch (InputMismatchException ime) {

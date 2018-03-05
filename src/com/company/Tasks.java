@@ -1,8 +1,9 @@
 package com.company;
 
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class Tasks {
+public class Tasks implements Serializable {
 
     Scanner input = new Scanner(System.in);
 
@@ -18,6 +19,9 @@ public class Tasks {
         this.title = title;
         DueDate = dueDate;
         this.taskDetails = taskDetails;
+    }
+
+    public Tasks() {
     }
 
     public String getCompletedTask() {
