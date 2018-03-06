@@ -7,11 +7,15 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class MainMenu {
+
+    FileSerialize fileClass = new FileSerialize();
+
     Calendar timeCompleted = Calendar.getInstance();
 
     Tasks task;
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
+
 
     BufferedWriter text;
 
@@ -63,12 +67,23 @@ public class MainMenu {
                     viewTaskDetails();
                     break;
                 case 9:
+                    // Hardcode task
+                    System.out.println(" Type in the number of the task you want to Hardcode ");
+                    int pushUp = 1;
+                    for (int l = 0; l < taskList.size(); l++) {
+                        System.out.println(pushUp + " " + taskList.get(l).getTitle());
+                        pushUp++;
+                    }
+                    fileClass.steralizeThis();
+                    break;
+                case 10:
                     // Closes the program
                     FileSerialize fileSave = new FileSerialize();
                     fileSave.steralizeThis();
                     System.out.println(" Closing Program...... ");
                     System.exit(0);
                     break;
+
                 default:
                     System.out.println(" Please put a valid number ");
                     selectionMenu();
@@ -254,7 +269,10 @@ public class MainMenu {
                 System.out.println(taskList.get(taskInfo).getDueDate());
                 System.out.println(taskList.get(taskInfo).getTaskDetails());
 
+
+
         }
+
                 }
 
 
