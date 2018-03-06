@@ -8,14 +8,13 @@ import java.util.*;
 
 public class MainMenu {
 
-    FileSerialize fileClass = new FileSerialize();
+
 
     Calendar timeCompleted = Calendar.getInstance();
 
     Tasks task;
     Scanner input = new Scanner(System.in);
     List<Tasks> taskList = new ArrayList();
-
 
     BufferedWriter text;
 
@@ -36,7 +35,8 @@ public class MainMenu {
                     " 6. Remove a task \n" +
                     " 7. Edit a task \n" +
                     " 8. View task details \n" +
-                    " 9. Exit task manager ");
+                    " 9. Hardcode / Full Save \n" +
+                    " 10. Exit Program ");
 
 
             switch (input.nextInt()) {
@@ -68,6 +68,7 @@ public class MainMenu {
                     break;
                 case 9:
                     // Hardcode task
+                    FileSerialize fileClass = new FileSerialize();
                     System.out.println(" Type in the number of the task you want to Hardcode ");
                     int pushUp = 1;
                     for (int l = 0; l < taskList.size(); l++) {
@@ -78,10 +79,9 @@ public class MainMenu {
                     break;
                 case 10:
                     // Closes the program
-                    FileSerialize fileSave = new FileSerialize();
-                    fileSave.steralizeThis();
                     System.out.println(" Closing Program...... ");
                     System.exit(0);
+
                     break;
 
                 default:
@@ -104,6 +104,8 @@ public class MainMenu {
             System.out.println("Invalid input ");
             selectionMenu();
 
+        } catch (IndexOutOfBoundsException ime) {
+            selectionMenu();
         }
     }
 
@@ -272,6 +274,7 @@ public class MainMenu {
 
 
         }
+
 
                 }
 

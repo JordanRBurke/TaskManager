@@ -17,7 +17,6 @@ public class FileSerialize extends MainMenu{
         try {
             // Writing object to file
             System.out.println(" Select the task you would like to save ");
-
             int steralizeInput = input.nextInt() - 1;
             Tasks taskSaveProcess = new Tasks(taskList.get(steralizeInput).getTitle(),
                     taskList.get(steralizeInput).getDueDate(),
@@ -41,6 +40,8 @@ public class FileSerialize extends MainMenu{
         } catch (IOException ime) {
             ime.printStackTrace();
         } catch (ClassNotFoundException ime) {
+            ime.printStackTrace();
+        } catch (IndexOutOfBoundsException ime) {
             ime.printStackTrace();
         }
 
